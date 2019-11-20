@@ -1,0 +1,28 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Node app with Amazon-like Storefront",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/md0808/bamazon.git"
+  },
+  "keywords": [
+    "bamazon",
+    "amazon",
+    "node"
+  ],
+  "author": "Monica Dixon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/md0808/bamazon/issues"
+  },
+  "homepage": "https://github.com/md0808/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^7.0.0",
+    "mysql": "^2.17.1"
+  }
+}
