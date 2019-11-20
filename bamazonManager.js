@@ -1,8 +1,5 @@
-// If a manager selects Add New Product, it should allow the manager to add a completely new product to the store.
 const mysql = require("mysql");
-
 const inquirer = require("inquirer");
-require('events').EventEmitter.prototype._maxListeners = 100;
 
 const connection = mysql.createConnection({
     port: 3306,
@@ -125,11 +122,8 @@ function addInventory() {
                         console.log("Product inventory updated\n");
                         whatsNext();
                     });
-
             });
         })
-
-
 };
 
 function addProduct() {

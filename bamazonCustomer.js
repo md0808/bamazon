@@ -24,7 +24,7 @@ function showInventory() {
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (let i = 0; i < res.length; i++) {
-            console.log(`${res[i].product_name} | Price: $${res[i].price} | Number in stock: ${res[i].stock_quantity} | Product Number:${res[i].id}\n`);
+            console.log(`${res[i].product_name} | Price: $${res[i].price} | Number in stock: ${res[i].stock_quantity} | Product Number: ${res[i].id}\n`);
         }
         getProduct(res);
     });
@@ -101,7 +101,7 @@ function getProduct() {
                                 }
                             ]).then(function (answer) {
                                 if (answer.confirm_purchase == true) {
-                                    console.log("purchase confirmed for" + quantity + "of " + res[i].product_name + " at $" +
+                                    console.log("purchase confirmed for " + quantity + " of " + res[i].product_name + " at $" +
                                         totalPrice);
                                     updateInventory(res[i], quantity);
                                 } else {
