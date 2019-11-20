@@ -1,23 +1,9 @@
-// \Running this application will first display all of the items available for sale. Include the ids, names, and prices of products for sale.
+const mysql = require("mysql");
 
-// \The app should then prompt users with two messages.
-
-// \The first should ask them the ID of the product they would like to buy.
-// \The second message should ask how many units of the product they would like to buy.
-// \Once the customer has placed the order, your application should check if your store has enough of the product to meet the customer's request.
-
-// \If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
-// H\owever, if your store does have enough of the product, you should fulfill the customer's order.
-
-// This means updating the SQL database to reflect the remaining quantity.
-// Once the update goes through, show the customer the total cost of their purchase.
-
-var mysql = require("mysql");
-
-var inquirer = require("inquirer");
+const inquirer = require("inquirer");
 require('events').EventEmitter.prototype._maxListeners = 100;
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "password",
@@ -34,7 +20,7 @@ connection.connect(function (err) {
 
 
 function showInventory() {
-    var query = "SELECT * FROM products";
+    let query = "SELECT * FROM products";
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (let i = 0; i < res.length; i++) {
@@ -97,7 +83,7 @@ function getProduct() {
         ]).then(function (answer) {
             let quantity = parseInt(answer.quantity);
             let proNum = parseInt(answer.number)
-            var query = "SELECT id, stock_quantity, product_name, price FROM bamazon.products";
+            let query = "SELECT id, stock_quantity, product_name, price FROM bamazon.products";
             connection.query(query, function (err, res) {
                 if (err) throw err;
                 // console.log(res);
@@ -115,8 +101,8 @@ function getProduct() {
                                 }
                             ]).then(function (answer) {
                                 if (answer.confirm_purchase == true) {
-                                    console.log("purchase confirmed for"+  quantity + "of " + res[i].product_name + " at $" +
-                                     totalPrice);
+                                    console.log("purchase confirmed for" + quantity + "of " + res[i].product_name + " at $" +
+                                        totalPrice);
                                     updateInventory(res[i], quantity);
                                 } else {
                                     whatsNext();
@@ -137,10 +123,10 @@ function getProduct() {
 }
 
 
-function updateInventory (item, amountSold) {
-    let newQuantity = parseInt (item.stock_quantity - amountSold);
-    if (newQuantity > 0){
-       let query = connection.query(
+function updateInventory(item, amountSold) {
+    let newQuantity = parseInt(item.stock_quantity - amountSold);
+    if (newQuantity > 0) {
+        let query = connection.query(
             "UPDATE products SET ? WHERE ?",
             [
                 {
@@ -155,12 +141,12 @@ function updateInventory (item, amountSold) {
                 if (err) throw err;
                 console.log("\n\r\n Inventory Updated.");
                 whatsNext();
-            } 
-    
+            }
+
         )
-    
+
     } else {
-        console.log (`You got the last of ${item.product_name}`);
+        console.log(`You got the last of ${item.product_name}`);
         whatsNext();
     }
 }
