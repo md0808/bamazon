@@ -8,6 +8,7 @@ From the manager entry point, the user can view entire inventory, check on low i
  * MySQL
  * MySQL npm
  * inquirer npm
+ * Javascript
  
  
  ## To Use
@@ -18,6 +19,12 @@ From the manager entry point, the user can view entire inventory, check on low i
  * Navigating to the root folder on the command line, ```node bamazonManager.js``` for customer functions
  
  ## Visual Documentation
+ ### [Click here for video documentation](https://md0808.github.io/bamazon/)
 
- 
+
+ <img width="640" alt="Screen Shot 2019-11-22 at 11 45 16 AM" src="https://user-images.githubusercontent.com/51139840/69448706-be3bee00-0d1e-11ea-86e6-9390d1a919ce.png">
+
+
+<img width="640" alt="Screen Shot 2019-11-22 at 11 45 56 AM" src="https://user-images.githubusercontent.com/51139840/69448773-e88dab80-0d1e-11ea-9277-e4e1120b0d9e.png">
+
  
